@@ -1,6 +1,6 @@
 import cStringIO
 import re
-from common import getip
+from common import getip, getname
 import traceroute
 
 class Probe(object):
@@ -101,6 +101,14 @@ class TracerouteParser(object):
 
     def get_probe_json(self):
         probe_result = []
+
+        #add itself as the first hop and continue
+        myself = Probe()
+        myself.ipaddr = getip.get_ip6('confine')
+        myself.group = myself.ipaddr
+        myself.name = getname.get_name_from_API()
+        probe_result.append(myself.json())
+
         for hop in self.hops:
             for probe in hop.probes:
                 if probe.ipaddr:
@@ -250,5 +258,5 @@ def get_trace_info():
     return probe_dict
 
 if __name__ == '__main__':
-    #test()
-    demo()
+    test()
+    #demo()

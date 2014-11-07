@@ -23,4 +23,7 @@ def get_node_list():
     finally:
         s.close()
 
+    #cache this list::
+    constants.nodes = get_node_list()
+
     return nodes

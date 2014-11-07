@@ -22,11 +22,12 @@ def update_node_list():
             node_uri= dict_node_uri['uri']
             node_ip6= get_node_ip_from_node_uri(node_uri)
             name = dict_node_uri['name']
+            print name
             if (node_ip6):
                 nodes.append({'Name':name, 'IP Address':node_ip6})
 
         print nodes
-        nodelist.write_node_list(nodes)
+        nodelist.write_file_node_list(nodes)
 
     else:
         print "[ERROR] No response from Controller"

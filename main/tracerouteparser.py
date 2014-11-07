@@ -1,7 +1,9 @@
 import cStringIO
 import re
-from common import getip, getname
+from common import getip, getname, nodelist, constants
 import traceroute
+import ping
+
 
 class Probe(object):
     """
@@ -256,6 +258,19 @@ def get_trace_info():
 
     probe_dict = trp.get_probe_json()
     return probe_dict
+
+
+def get_inter_node_trace():
+
+    probe=[]
+
+    nodelist = constants.nodes
+    for nodes in nodelist:
+        ping_status = ping.ping6(nodes['IP Address'])
+        probe.append([{'IP Address':nodes['IP Address'],'Name':nodes['Name'], 'Status': ping_status}])
+
+    return probe
+
 
 if __name__ == '__main__':
     test()

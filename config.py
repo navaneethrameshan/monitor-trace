@@ -1,6 +1,7 @@
 import os
 import time
 
+CONTROLLER_IP = 'controller.confine-project.eu'
 TIMEPERIOD = 3600
 RECEIVEDTIMESTAMP=[]
 TIMEMAP_SERVER_CLIENT = {}

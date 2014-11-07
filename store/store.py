@@ -14,6 +14,9 @@ def monitorStore():
     """
     trace_info = {}
     trace_info['trace'] = tracerouteparser.get_trace_info()
+
+    trace_info['inter-trace'] = tracerouteparser.get_inter_node_trace()
+
     trace_info ['monitored_timestamp'] = config.get_current_system_timestamp()
     print trace_info
 

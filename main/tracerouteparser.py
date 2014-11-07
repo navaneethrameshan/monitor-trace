@@ -265,6 +265,13 @@ def get_inter_node_trace():
     probe=[]
 
     nodelist = constants.nodes
+
+    #First element in the List is always Self!!!
+    ipaddr = getip.get_ip6('confine')
+    group = ipaddr
+    name = getname.get_name_from_API()
+    probe.append({'IP Address':ipaddr,'Name':name.encode('utf8'), 'Status': True})
+
     for nodes in nodelist:
         ping_status = ping.ping6(nodes['IP Address'])
         probe.append({'IP Address':nodes['IP Address'],'Name':nodes['Name'].encode('utf8'), 'Status': ping_status})

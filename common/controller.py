@@ -28,6 +28,9 @@ def update_node_list():
         print nodes
         nodelist.write_node_list(nodes)
 
+    else:
+        print "[ERROR] No response from Controller"
+
 
 
 

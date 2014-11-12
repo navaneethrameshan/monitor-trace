@@ -6,7 +6,7 @@ def ping6(ip):
     ping.wait()
     if ping.returncode != 0:
         #print ping.returncode, "ERROR: failed to ping host. Please check."
-        return {'Status':True,'Loss':None,'Min':None,'Avg':None,'Max':None}
+        return {'Status':False,'Loss':None,'Min':None,'Avg':None,'Max':None}
     else:
         #print "OK"
         output = ping.stdout.read().split("\n")
